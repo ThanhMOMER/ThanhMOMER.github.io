@@ -90,6 +90,18 @@
                 ctx.fillRect(x0, y, (img_width - margin * 2) / 4, h);
                 ctx.strokeRect(x0, y, (img_width - margin * 2) / 4, h);
 
+                // Vẽ 4 phần con chỉ bằng đường kẻ
+                ctx.strokeStyle = "#555"; // Màu xám cho phần con
+                ctx.lineWidth = 2;
+                for (let j = 1; j < 4; j++) {
+                    const sub_x = x0 + j * ((img_width - margin * 2) / 4) / 4;
+                    ctx.beginPath();
+                    ctx.moveTo(sub_x, y);
+                    ctx.lineTo(sub_x, y + h);
+                    ctx.stroke();
+}
+
+
                 // Vẽ nhãn con
                 ctx.fillStyle = "black";
                 ctx.font = "bold 42px Arial";
