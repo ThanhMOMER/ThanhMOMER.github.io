@@ -207,18 +207,65 @@
 
 
 
-            // 12H
-            let hour12 = now.getHours() < 12 ? 0 : 12;
-            let start_12h = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour12, 0, 0);
-            let end_12h = new Date(start_12h.getTime() + 12 * 60 * 60 * 1000);
+            // ==== Cấp 12H ====
+            let today_7h = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 7, 0, 0);
+            let today_19h = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0);
+
+            let start_12h, end_12h;
+
+            if (now >= today_7h && now < today_19h) {
+                start_12h = today_7h;
+                end_12h = today_19h;
+            } else if (now >= today_19h) {
+                start_12h = today_19h;
+                end_12h = new Date(today_7h.getTime() + 24 * 60 * 60 * 1000); // 7h ngày mai
+            } else {
+                // now < 7h → nằm trong khoảng 19h hôm trước – 7h hôm nay
+                start_12h = new Date(today_7h.getTime() - 12 * 60 * 60 * 1000); // 19h hôm qua
+                end_12h = today_7h;
+            }
+
             drawTimeSection(section_positions[6], start_12h, end_12h, colors, labels, "Cấp 12H");
 
 
-            // 6h
-            let hour6 = Math.floor(now.getHours() / 6) * 6;
-            let start_6h = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour6, 0, 0);
-            let end_6h = new Date(start_6h.getTime() + 6 * 60 * 60 * 1000);
+            // ==== Cấp 6H ====
+            let start_6h, end_6h;
+            let six_hour_ms = 6 * 60 * 60 * 1000;
+
+            // Tính tất cả các mốc 6h bắt đầu từ 7h hôm nay
+            let six_slots = [
+                new Date(today_7h),
+                new Date(today_7h.getTime() + six_hour_ms),
+                new Date(today_7h.getTime() + 2 * six_hour_ms),
+                new Date(today_7h.getTime() + 3 * six_hour_ms)
+            ];
+
+            // Nếu now < 7h, lùi lại 2 mốc đêm hôm trước
+            if (now < today_7h) {
+                six_slots = [
+                    new Date(today_7h.getTime() - 2 * six_hour_ms), // 19h hôm trước
+                    new Date(today_7h.getTime() - six_hour_ms),     // 1h hôm nay
+                    new Date(today_7h),
+                    new Date(today_7h.getTime() + six_hour_ms)
+                ];
+            }
+
+            for (let i = 0; i < six_slots.length - 1; i++) {
+                if (now >= six_slots[i] && now < six_slots[i + 1]) {
+                    start_6h = six_slots[i];
+                    end_6h = six_slots[i + 1];
+                    break;
+                }
+            }
+            // Nếu không nằm trong bất kỳ đoạn nào (trường hợp == 7h đúng), lấy đoạn cuối
+            if (!start_6h || !end_6h) {
+                start_6h = six_slots[three_slots.length - 2];
+                end_6h = six_slots[three_slots.length - 1];
+            }
+
             drawTimeSection(section_positions[7], start_6h, end_6h, colors, labels, "Cấp 6H");
+
+
 
 
 
