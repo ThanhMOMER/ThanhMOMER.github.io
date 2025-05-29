@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Pha Thời Gian</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+        #canvasContainer {
+            width: 100%;
+            max-width: 960px;
+        }
+
+        canvas {
+            width: 100%;
+            height: auto;
+            border: 1px solid black;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvasContainer">
+        <canvas id="timeCanvas" width="3840" height="4320"></canvas>
+    </div>
+    <script>
+        const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Ho_Chi_Minh" }));
+
+        const img_width = 3840;
+        const img_height = 4320;
+        const margin = 250;
+        const gap = 100;
+        const section_height = Math.floor((img_height - margin * 2 - 11 * gap) / 12);
+        const section_positions = Array.from({ length: 12 }, (_, i) => margin + i * (section_height + gap));
+        const total_height = section_positions[11] + section_height;
+
+        const canvas = document.getElementById("timeCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const colors = ["#b3e5fc", "#c8e6c9", "#fff9c4", "#ffcdd2"];
+        const labels = ["1", "2", "3", "4"];
+
+        function formatDateTime(date) {
+            return `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth() + 1).toString().padStart(2, "0")} ${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`;
+        }
+
+        function drawTimeSection(y_px, start_time, end_time, colors, sublabels, title, prefix = "") {
+            const y = y_px;
+            const h = section_height;
+
+            for (let i = 0; i < 4; i++) {
+                const x0 = margin + (i / 4) * (img_width - margin * 2);
+                ctx.fillStyle = colors[i];
+                ctx.strokeStyle = "gray";
+                ctx.fillRect(x0, y, (img_width - margin * 2) / 4, h);
+                ctx.strokeRect(x0, y, (img_width - margin * 2) / 4, h);
+
+                ctx.fillStyle = "black";
+                ctx.font = "bold 42px Arial";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(sublabels[i], x0 + (img_width - margin * 2) / 8, y + h / 2);
+            }
+
+            const total_sec = (end_time - start_time) / 1000;
+            const elapsed_sec = (now - start_time) / 1000;
+            const now_pos = margin + Math.max(0, Math.min(1, elapsed_sec / total_sec)) * (img_width - margin * 2);
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = 6;
+            ctx.setLineDash([10, 10]);
+            ctx.beginPath();
+            ctx.moveTo(now_pos, y);
+            ctx.lineTo(now_pos, y + h);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            ctx.fillStyle = "black";
+            ctx.font = "bold 24px Arial";
+            ctx.textAlign = "center";
+            for (let i = 0; i < 5; i++) {
+                const frac = i / 4;
+                const time_point = new Date(start_time.getTime() + total_sec * frac * 1000);
+                const label = formatDateTime(time_point);
+                ctx.fillText(label, margin + frac * (img_width - margin * 2), y - 36);
+            }
+
+            ctx.fillStyle = "black";
+            ctx.font = "bold 39px Arial";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "middle";
+            ctx.fillText(title, margin + 260, y - 35);
+        }
+
+        function drawTimeline() {
+            ctx.clearRect(0, 0, img_width, img_height);
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, img_width, img_height);
+
+            ctx.fillStyle = "red";
+            ctx.font = "bold 60px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "top";
+            ctx.fillText("BẢNG PHA THỜI GIAN", img_width / 2, margin);
+
+            const levels = [
+                { label: "Cấp 1Y", start: new Date(now.getFullYear(), 0, 1, 7), end: new Date(now.getFullYear() + 1, 0, 1, 7) },
+                { label: "Cấp 6M", start: new Date(now.getFullYear(), now.getMonth() < 6 ? 0 : 6, 1, 7), end: new Date(now.getFullYear(), now.getMonth() < 6 ? 6 : 12, 1, 7) },
+                { label: "Cấp 3M", start: new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3, 1, 7), end: new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3 + 3, 1, 7) },
+                { label: "Cấp 1M", start: new Date(now.getFullYear(), now.getMonth(), 1, 7), end: new Date(now.getFullYear(), now.getMonth() + 1, 1, 7) },
+                { label: "Cấp 1W", start: (() => { let d = new Date(now); d.setDate(now.getDate() - ((now.getDay() + 6) % 7)); d.setHours(7, 0, 0, 0); return d; })(), end: (() => { let d = new Date(now); d.setDate(now.getDate() - ((now.getDay() + 6) % 7) + 7); d.setHours(7, 0, 0, 0); return d; })() },
+                { label: "Cấp 1D", start: new Date(now.getFullYear(), now.getMonth(), now.getDate(), 7), end: new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 7) },
+                { label: "Cấp 12H", start: (() => { let h = now.getHours() < 12 ? 0 : 12; return new Date(now.getFullYear(), now.getMonth(), now.getDate(), h); })(), end: (() => { let h = now.getHours() < 12 ? 12 : 24; return new Date(now.getFullYear(), now.getMonth(), now.getDate(), h); })() },
+                { label: "Cấp 6H", start: (() => { let h = Math.floor(now.getHours() / 6) * 6; return new Date(now.getFullYear(), now.getMonth(), now.getDate(), h); })(), end: (() => { let h = Math.floor(now.getHours() / 6) * 6 + 6; return new Date(now.getFullYear(), now.getMonth(), now.getDate(), h); })() }
+            ];
+
+            for (let i = 0; i < levels.length; i++) {
+                drawTimeSection(section_positions[i], levels[i].start, levels[i].end, colors, labels, levels[i].label);
+            }
+
+            const current_time_str = `Bây giờ là: ${formatDateTime(now)}:${now.getSeconds().toString().padStart(2, "0")}`;
+            ctx.fillStyle = "black";
+            ctx.font = "bold 44px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "bottom";
+            ctx.fillText(current_time_str, img_width / 2, img_height - margin / 2);
+        }
+
+        drawTimeline();
+    </script>
+</body>
+
+</html>
