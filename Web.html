@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Pha Thời Gian</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            /* Thêm margin cho body */
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+        #canvasContainer {
+            width: 100%;
+            max-width: 960px;
+        }
+
+        canvas {
+            width: 100%;
+            height: auto;
+            border: 1px solid black;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvasContainer">
+        <canvas id="timeCanvas" width="3840" height="2160"></canvas>
+    </div>
+    <script>
+        // Thiết lập múi giờ và thời gian hiện tại
+        const vn_tz = "Asia/Ho_Chi_Minh";
+        const now = new Date('2025-05-29T10:28:00+07:00');
+
+        // Kích thước canvas
+        const img_width = 3840;
+        const img_height = 2160;
+        /// const - Thêm margin 4 bên
+        const margin = 250; // Margin 50px cho 4 bên
+        const gap = 100;
+        const section_height = Math.floor((img_height - margin * 2 - 6 * gap) / 7);
+        const section_positions = Array.from({ length: 7 }, (_, i) => margin + i * (section_height + gap));
+        const total_height = section_positions[6] + section_height;
+
+        // Lấy canvas và context
+        const canvas = document.getElementById("timeCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Màu sắc và nhãn
+        const colors = ["#b3e5fc", "#c8e6c9", "#fff9c4", "#ffcdd2"];
+        const labels = ["1", "2", "3", "4"];
+
+        // Hàm định dạng ngày giờ
+        function formatDateTime(date) {
+            return `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth() + 1).toString().padStart(2, "0")} ${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`;
+        }
+
+        // Hàm vẽ biểu tượng lịch
+        function drawCalendarIcon(x, y) {
+            ctx.fillStyle = "#2196F3";
+            ctx.fillRect(x, y, 30, 30);
+            ctx.fillStyle = "white";
+            ctx.font = "bold 20px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("📅", x + 15, y + 15);
+        }
+
+        // Hàm vẽ từng khung
+        function drawTimeSection(y_px, start_time, end_time, colors, sublabels, title, prefix = "") {
+            const y = y_px / total_height * (img_height - margin * 2) + margin;
+            const h = section_height / total_height * (img_height - margin * 2);
+
+            // Vẽ 4 phần chính
+            for (let i = 0; i < 4; i++) {
+                const x0 = margin + (i / 4) * (img_width - margin * 2);
+                ctx.fillStyle = colors[i];
+                ctx.strokeStyle = "gray";
+                ctx.fillRect(x0, y, (img_width - margin * 2) / 4, h);
+                ctx.strokeRect(x0, y, (img_width - margin * 2) / 4, h);
+
+                // Vẽ nhãn con
+                ctx.fillStyle = "black";
+                ctx.font = "bold 42px Arial";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(sublabels[i], x0 + (img_width - margin * 2) / 8, y + h / 2);
+            }
+
+            // Vạch "Now"
+            const total_sec = (end_time - start_time) / 1000;
+            const elapsed_sec = (now - start_time) / 1000;
+            const now_pos = margin + Math.max(0, Math.min(1, elapsed_sec / total_sec)) * (img_width - margin * 2);
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = 6;
+            ctx.setLineDash([10, 10]);
+            ctx.beginPath();
+            ctx.moveTo(now_pos, y);
+            ctx.lineTo(now_pos, y + h);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Mốc chia chính
+            ctx.fillStyle = "black";
+            ctx.font = "bold 24px Arial";
+            ctx.textAlign = "center";
+            for (let i = 0; i < 5; i++) {
+                const frac = i / 4;
+                const time_point = new Date(start_time.getTime() + total_sec * frac * 1000);
+                const label = formatDateTime(time_point);
+                ctx.fillText(label, margin + frac * (img_width - margin * 2), y - 36);
+            }
+
+            // // Tên khung
+            // ctx.fillStyle = "black";
+            // ctx.font = "bold 39px Arial";
+            // ctx.textAlign = "left";
+            // ctx.textBaseline = "middle";
+            // ctx.fillText(title, margin + 60, y + h / 2 - 10);
+            // Tên khung
+            ctx.fillStyle = "black";
+            ctx.font = "bold 39px Arial";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "middle";
+            ctx.fillText(title, margin + 260, y - 35); // Chỉnh x thành margin, y dịch lên trên
+        }
+
+        // Hàm chính để vẽ
+        function drawTimeline() {
+            ctx.clearRect(0, 0, img_width, img_height);
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, img_width, img_height);
+
+            // Tiêu đề
+            ctx.fillStyle = "red";
+            ctx.font = "bold 60px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "top";
+            ctx.fillText("BẢNG PHA THỜI GIAN", img_width / 2, margin);
+
+            // Cấp 3M
+            // let start_3m = new Date('2025-02-08T07:00:00+07:00');
+            // const end_3m = new Date('2025-05-29T07:00:00+07:00');
+            // drawTimeSection(section_positions[0], start_3m, end_3m, colors, labels, "Cấp 3M");
+            let start_quarter_month = Math.floor(now.getMonth() / 3) * 3;
+            let start_3m = new Date(now.getFullYear(), start_quarter_month, 1, 7);
+            let end_3m = new Date(
+                start_quarter_month === 9 ? now.getFullYear() + 1 : now.getFullYear(),
+                (start_quarter_month + 3) % 12,
+                1, 7
+            );
+            drawTimeSection(section_positions[0], start_3m, end_3m, colors, labels, "Cấp 3M");
+
+
+            // Cấp 1M
+            let start_1m = new Date('2025-01-05T07:00:00+07:00');
+            const end_1m = new Date('2025-06-01T07:00:00+07:00');
+            drawTimeSection(section_positions[1], start_1m, end_1m, colors, labels, "Cấp 1M");
+
+            // Cấp 5D
+            let start_5d = new Date('2025-05-27T07:00:00+07:00');
+            const end_5d = new Date('2025-06-01T07:00:00+07:00');
+            drawTimeSection(section_positions[2], start_5d, end_5d, colors, labels, "Cấp 5D");
+            drawCalendarIcon(margin + 20, section_positions[4] / total_height * (img_height - margin * 2) + margin);
+
+            // Cấp 3D
+            let start_3d = new Date('2025-05-28T07:00:00+07:00');
+            const end_3d = new Date('2025-05-31T07:00:00+07:00');
+            drawTimeSection(section_positions[3], start_3d, end_3d, colors, labels, "Cấp 3D");
+
+            // Cấp W
+            let start_w = new Date('2025-05-26T07:00:00+07:00');
+            const end_w = new Date('2025-06-02T07:00:00+07:00');
+            drawTimeSection(section_positions[4], start_w, end_w, colors, labels, "Cấp W");
+
+            // 1/4W hiện tại
+            let start_quarter = new Date('2025-05-26T07:00:00+07:00');
+            const end_quarter = new Date('2025-05-28T01:00:00+07:00');
+            drawTimeSection(section_positions[5], start_quarter, end_quarter, colors, labels, "1/4W hiện tại");
+
+            // 1/4 của 1/4W hiện tại
+            let start_sixteenth = new Date('2025-05-26T07:00:00+07:00');
+            const end_sixteenth = new Date('2025-05-26T17:30:00+07:00');
+            drawTimeSection(section_positions[6], start_sixteenth, end_sixteenth, colors, labels, "1/4 của 1/4W hiện tại");
+
+            // Ghi thời gian hiện tại
+            const current_time_str = `Bây giờ là: ${formatDateTime(now)}:${now.getSeconds().toString().padStart(2, "0")}`;
+            ctx.fillStyle = "black";
+            ctx.font = "bold 24px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "bottom";
+            ctx.fillText(current_time_str, img_width / 2, img_height - margin);
+        }
+
+        // Vẽ biểu đồ
+        drawTimeline();
+    </script>
+</body>
+
+</html>

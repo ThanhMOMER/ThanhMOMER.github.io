@@ -1,0 +1,11 @@
+tìm Logic tính giờ cho trade coin
+theo hình dưới tính ngày giờ hiện tại now() ở đâu chia làm 4 phần của thời gian đang chia rồi chon
+# 1 năm là từ start là 1/1 đến end 1/1 năm sau - chia làm 4 phần rồi để now tại mốc
+# 6M (6 Months) tìm now là trong trong (12/6) tháng rồi start là ngày đầu của phần chia, end là ngày cuối
+# 3M (3 Months) tìm now là trong quý nào (12/3) rồi start ngày đầu của quý .end là cuối quý
+# 1M (1 Month) thì now trong tháng của now rồi cũng chia 4 phần
+# 5D (5 Days) 
+# 3D (3 Days)
+# W (1 Week) tìm ngày trong tuần của now rồi start là thứ 2 end chủ nhật
+# 1/4W (1/4 Week)
+# 1/4 của 1/4W (1/16 Week)
