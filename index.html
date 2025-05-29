@@ -36,8 +36,10 @@
     </div>
     <script>
         // Thiết lập múi giờ và thời gian hiện tại
-        const vn_tz = "Asia/Ho_Chi_Minh";
-        const now = new Date('2025-05-29T10:28:00+07:00');
+        // const vn_tz = "Asia/Ho_Chi_Minh";
+        // const now = new Date('2025-05-29T10:28:00+07:00');
+        const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Ho_Chi_Minh" }));
+
 
         // Kích thước canvas
         const img_width = 3840;
@@ -146,9 +148,6 @@
             ctx.fillText("BẢNG PHA THỜI GIAN", img_width / 2, margin);
 
             // Cấp 3M
-            // let start_3m = new Date('2025-02-08T07:00:00+07:00');
-            // const end_3m = new Date('2025-05-29T07:00:00+07:00');
-            // drawTimeSection(section_positions[0], start_3m, end_3m, colors, labels, "Cấp 3M");
             let start_quarter_month = Math.floor(now.getMonth() / 3) * 3;
             let start_3m = new Date(now.getFullYear(), start_quarter_month, 1, 7);
             let end_3m = new Date(
@@ -160,35 +159,59 @@
 
 
             // Cấp 1M
-            let start_1m = new Date('2025-01-05T07:00:00+07:00');
-            const end_1m = new Date('2025-06-01T07:00:00+07:00');
+            let start_1m = new Date(now.getFullYear(), now.getMonth(), 1, 7);
+            let end_1m = new Date(now.getFullYear(), now.getMonth() + 1, 1, 7);
             drawTimeSection(section_positions[1], start_1m, end_1m, colors, labels, "Cấp 1M");
 
+
             // Cấp 5D
-            let start_5d = new Date('2025-05-27T07:00:00+07:00');
-            const end_5d = new Date('2025-06-01T07:00:00+07:00');
+            let days_back_5d = now.getDate() % 5;
+            let start_5d = new Date(now);
+            start_5d.setDate(now.getDate() - days_back_5d);
+            start_5d.setHours(7, 0, 0, 0);
+            let end_5d = new Date(start_5d);
+            end_5d.setDate(start_5d.getDate() + 5);
             drawTimeSection(section_positions[2], start_5d, end_5d, colors, labels, "Cấp 5D");
-            drawCalendarIcon(margin + 20, section_positions[4] / total_height * (img_height - margin * 2) + margin);
+
 
             // Cấp 3D
-            let start_3d = new Date('2025-05-28T07:00:00+07:00');
-            const end_3d = new Date('2025-05-31T07:00:00+07:00');
+            let days_back_3d = now.getDate() % 3;
+            let start_3d = new Date(now);
+            start_3d.setDate(now.getDate() - days_back_3d);
+            start_3d.setHours(7, 0, 0, 0);
+            let end_3d = new Date(start_3d);
+            end_3d.setDate(start_3d.getDate() + 3);
             drawTimeSection(section_positions[3], start_3d, end_3d, colors, labels, "Cấp 3D");
 
+
             // Cấp W
-            let start_w = new Date('2025-05-26T07:00:00+07:00');
-            const end_w = new Date('2025-06-02T07:00:00+07:00');
+            let weekday = now.getDay() === 0 ? 7 : now.getDay(); // CN = 0 -> 7
+            let start_w = new Date(now);
+            start_w.setDate(now.getDate() - weekday + 1);
+            start_w.setHours(7, 0, 0, 0);
+            let end_w = new Date(start_w);
+            end_w.setDate(start_w.getDate() + 7);
             drawTimeSection(section_positions[4], start_w, end_w, colors, labels, "Cấp W");
 
+
             // 1/4W hiện tại
-            let start_quarter = new Date('2025-05-26T07:00:00+07:00');
-            const end_quarter = new Date('2025-05-28T01:00:00+07:00');
-            drawTimeSection(section_positions[5], start_quarter, end_quarter, colors, labels, "1/4W hiện tại");
+            let total_week_duration = 7 * 24 * 60 * 60 * 1000;
+            let part_duration = total_week_duration / 4;
+            let offset = now.getTime() - start_w.getTime();
+            let part_index = Math.floor(offset / part_duration);
+            let start_qw = new Date(start_w.getTime() + part_index * part_duration);
+            let end_qw = new Date(start_qw.getTime() + part_duration);
+            drawTimeSection(section_positions[5], start_qw, end_qw, colors, labels, "1/4W");
+
 
             // 1/4 của 1/4W hiện tại
-            let start_sixteenth = new Date('2025-05-26T07:00:00+07:00');
-            const end_sixteenth = new Date('2025-05-26T17:30:00+07:00');
-            drawTimeSection(section_positions[6], start_sixteenth, end_sixteenth, colors, labels, "1/4 của 1/4W hiện tại");
+            let sub_part_duration = part_duration / 4;
+            let offset_sub = now.getTime() - start_qw.getTime();
+            let sub_index = Math.floor(offset_sub / sub_part_duration);
+            let start_qqw = new Date(start_qw.getTime() + sub_index * sub_part_duration);
+            let end_qqw = new Date(start_qqw.getTime() + sub_part_duration);
+            drawTimeSection(section_positions[6], start_qqw, end_qqw, colors, labels, "1/4 của 1/4W");
+
 
             // Ghi thời gian hiện tại
             const current_time_str = `Bây giờ là: ${formatDateTime(now)}:${now.getSeconds().toString().padStart(2, "0")}`;
