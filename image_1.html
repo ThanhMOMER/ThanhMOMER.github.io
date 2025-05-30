@@ -37,6 +37,8 @@
       const canvas = document.getElementById("timeCanvas");
       const ctx = canvas.getContext("2d");
 
+      const sectionIcons = ["📅", "🗓️", "⏳", "🕒", "🧭", "🕰️", "⏰", "📆"];
+
       function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -75,7 +77,8 @@
         img_height,
         margin,
         section_height,
-        total_height
+        // total_height,
+        sectionIndex = 0
       ) {
         const y = y_px;
         const h = section_height;
@@ -145,17 +148,53 @@
             y - h * 0.15
           );
         }
-
         // Tiêu đề (caption)
-        ctx.fillStyle = "black";
         ctx.font = `bold ${Math.floor(h * 0.55)}px Arial`;
-        ctx.textAlign = "center"; // Căn giữa
+        ctx.textAlign = "left"; // Căn trái để đo chính xác width
         ctx.textBaseline = "bottom";
 
-        // Tính tọa độ X chính giữa vùng vẽ
-        const sectionCenterX = margin + (img_width - margin * 2) / 2;
+        // Tính nội dung
+        const icon = sectionIcons[sectionIndex];
+        const titleText = `${title}`;
 
-        ctx.fillText(title, sectionCenterX, y - h * 0.45);
+        // Đo chiều rộng icon và title
+        const iconWidth = ctx.measureText(icon).width;
+        const titleWidth = ctx.measureText(titleText).width;
+        const spacing = 10; // khoảng cách giữa icon và title
+
+        const totalWidth = iconWidth + spacing + titleWidth;
+
+        // Tính vị trí bắt đầu để căn giữa
+        const sectionCenterX = margin + (img_width - margin * 2) / 2;
+        const startX = sectionCenterX - totalWidth / 2;
+        const yCaption = y - h * 0.45;
+
+        // Vẽ icon
+        ctx.font = "bold 20px Arial";
+        ctx.fillText(icon, startX, yCaption);
+
+        // Vẽ title
+        ctx.font = `bold ${Math.floor(h * 0.55)}px Arial`;
+        ctx.fillText(titleText, startX + iconWidth + spacing, yCaption);
+
+
+
+        // // Tiêu đề (caption)
+        // ctx.fillStyle = "black";
+        // ctx.font = `bold ${Math.floor(h * 0.55)}px Arial`;
+        // ctx.textAlign = "center"; // Căn giữa
+        // ctx.textBaseline = "bottom";
+
+        // // Tính tọa độ X chính giữa vùng vẽ
+        // const sectionCenterX = margin + (img_width - margin * 2) / 2;
+
+        // ctx.fillText(title, sectionCenterX + 60, y - h * 0.45);
+
+        // // Vẽ icon
+        // ctx.font = "bold 39px Arial";
+        // ctx.fillText(sectionIcons[sectionIndex], sectionCenterX-60, y - h * 0.45); // icon trước tiêu đề
+
+
 
       }
 
@@ -202,7 +241,8 @@
           img_width,
           img_height,
           margin,
-          section_height
+          section_height,
+          0
         );
 
         let start_1m = new Date(now.getFullYear(), now.getMonth(), 1, 7);
@@ -217,7 +257,8 @@
           img_width,
           img_height,
           margin,
-          section_height
+          section_height,
+          1
         );
 
         let days_back_5d = now.getDate() % 5;
@@ -236,7 +277,8 @@
           img_width,
           img_height,
           margin,
-          section_height
+          section_height,
+          2
         );
 
         let days_back_3d = now.getDate() % 3;
@@ -255,7 +297,8 @@
           img_width,
           img_height,
           margin,
-          section_height
+          section_height,
+          3
         );
 
         let weekday = now.getDay() === 0 ? 7 : now.getDay();
@@ -274,7 +317,8 @@
           img_width,
           img_height,
           margin,
-          section_height
+          section_height,
+          4
         );
 
         let total_week_duration = 7 * 24 * 60 * 60 * 1000;
@@ -293,7 +337,8 @@
           img_width,
           img_height,
           margin,
-          section_height
+          section_height,
+          5
         );
 
         let sub_part_duration = part_duration / 4;
@@ -313,7 +358,8 @@
           img_width,
           img_height,
           margin,
-          section_height
+          section_height,
+          6
         );
 
         const current_time_str = `Bây giờ là: ${formatDateTime(now)}:${now

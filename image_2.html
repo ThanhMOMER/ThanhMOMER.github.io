@@ -37,6 +37,9 @@
       const canvas = document.getElementById("timeCanvas");
       const ctx = canvas.getContext("2d");
 
+
+      const sectionIcons = ["📅", "🗓️", "⏳", "🕒", "🧭", "🕰️", "⏰", "📆"];
+
       function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -75,7 +78,8 @@
         img_height,
         margin,
         section_height,
-        total_height
+        // total_height,
+        sectionIndex = 0
       ) {
         const y = y_px;
         const h = section_height;
@@ -147,15 +151,44 @@
         }
 
         // Tiêu đề (caption)
-        ctx.fillStyle = "black";
         ctx.font = `bold ${Math.floor(h * 0.55)}px Arial`;
-        ctx.textAlign = "center"; // Căn giữa
+        ctx.textAlign = "left"; // Căn trái để đo chính xác width
         ctx.textBaseline = "bottom";
 
-        // Tính tọa độ X chính giữa vùng vẽ
-        const sectionCenterX = margin + (img_width - margin * 2) / 2;
+        // Tính nội dung
+        const icon = sectionIcons[sectionIndex];
+        const titleText = `${title}`;
 
-        ctx.fillText(title, sectionCenterX, y - h * 0.45);
+        // Đo chiều rộng icon và title
+        const iconWidth = ctx.measureText(icon).width;
+        const titleWidth = ctx.measureText(titleText).width;
+        const spacing = 10; // khoảng cách giữa icon và title
+
+        const totalWidth = iconWidth + spacing + titleWidth;
+
+        // Tính vị trí bắt đầu để căn giữa
+        const sectionCenterX = margin + (img_width - margin * 2) / 2;
+        const startX = sectionCenterX - totalWidth / 2;
+        const yCaption = y - h * 0.45;
+
+        // Vẽ icon
+        ctx.font = "bold 20px Arial";
+        ctx.fillText(icon, startX, yCaption);
+
+        // Vẽ title
+        ctx.font = `bold ${Math.floor(h * 0.55)}px Arial`;
+        ctx.fillText(titleText, startX + iconWidth + spacing, yCaption);
+
+        // // Tiêu đề (caption)
+        // ctx.fillStyle = "black";
+        // ctx.font = `bold ${Math.floor(h * 0.55)}px Arial`;
+        // ctx.textAlign = "center"; // Căn giữa
+        // ctx.textBaseline = "bottom";
+
+        // // Tính tọa độ X chính giữa vùng vẽ
+        // const sectionCenterX = margin + (img_width - margin * 2) / 2;
+
+        // ctx.fillText(title, sectionCenterX, y - h * 0.45);
 
       }
 
@@ -183,24 +216,24 @@
         // ==== Cấp 1Y ====
         let start_y = new Date(now.getFullYear(), 0, 1, 7);
         let end_y = new Date(now.getFullYear() + 1, 0, 1, 7);
-        drawTimeSection(section_positions[0], start_y, end_y, colors, labels, "Cấp 1Y", img_width, img_height, margin, section_height);
+        drawTimeSection(section_positions[0], start_y, end_y, colors, labels, "Cấp 1Y", img_width, img_height, margin, section_height, 0);
 
         // ==== Cấp 6M ====
         let month6 = Math.floor(now.getMonth() / 6) * 6;
         let start_6m = new Date(now.getFullYear(), month6, 1, 7);
         let end_6m = new Date(start_6m.getFullYear(), start_6m.getMonth() + 6, 1, 7);
-        drawTimeSection(section_positions[1], start_6m, end_6m, colors, labels, "Cấp 6M", img_width, img_height, margin, section_height);
+        drawTimeSection(section_positions[1], start_6m, end_6m, colors, labels, "Cấp 6M", img_width, img_height, margin, section_height, 1);
 
         // ==== Cấp 3M ====
         let month3 = Math.floor(now.getMonth() / 3) * 3;
         let start_3m = new Date(now.getFullYear(), month3, 1, 7);
         let end_3m = new Date(start_3m.getFullYear(), start_3m.getMonth() + 3, 1, 7);
-        drawTimeSection(section_positions[2], start_3m, end_3m, colors, labels, "Cấp 3M", img_width, img_height, margin, section_height);
+        drawTimeSection(section_positions[2], start_3m, end_3m, colors, labels, "Cấp 3M", img_width, img_height, margin, section_height, 2);
 
         // ==== Cấp 1M ====
         let start_1m = new Date(now.getFullYear(), now.getMonth(), 1, 7);
         let end_1m = new Date(start_1m.getFullYear(), start_1m.getMonth() + 1, 1, 7);
-        drawTimeSection(section_positions[3], start_1m, end_1m, colors, labels, "Cấp 1M", img_width, img_height, margin, section_height);
+        drawTimeSection(section_positions[3], start_1m, end_1m, colors, labels, "Cấp 1M", img_width, img_height, margin, section_height, 3);
 
         // ==== Cấp 1W ====
         let weekday = now.getDay() === 0 ? 7 : now.getDay(); // CN = 0 -> 7
@@ -209,12 +242,12 @@
         start_w.setHours(7, 0, 0, 0);
         let end_w = new Date(start_w);
         end_w.setDate(start_w.getDate() + 7);
-        drawTimeSection(section_positions[4], start_w, end_w, colors, labels, "Cấp 1W", img_width, img_height, margin, section_height);
+        drawTimeSection(section_positions[4], start_w, end_w, colors, labels, "Cấp 1W", img_width, img_height, margin, section_height, 4);
 
         // ==== Cấp 1D ====
         let start_d = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 7, 0, 0);
         let end_d = new Date(start_d.getTime() + 24 * 60 * 60 * 1000);
-        drawTimeSection(section_positions[5], start_d, end_d, colors, labels, "Cấp 1D", img_width, img_height, margin, section_height);
+        drawTimeSection(section_positions[5], start_d, end_d, colors, labels, "Cấp 1D", img_width, img_height, margin, section_height, 5);
 
         // ==== Cấp 12H ====
         let today_7h = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 7, 0, 0);
@@ -231,7 +264,7 @@
           start_12h = new Date(today_7h.getTime() - 12 * 60 * 60 * 1000); // 19h hôm qua
           end_12h = today_7h;
         }
-        drawTimeSection(section_positions[6], start_12h, end_12h, colors, labels, "Cấp 12H", img_width, img_height, margin, section_height);
+        drawTimeSection(section_positions[6], start_12h, end_12h, colors, labels, "Cấp 12H", img_width, img_height, margin, section_height, 6);
 
         // ==== Cấp 6H ====
         let start_6h, end_6h;
@@ -261,7 +294,7 @@
           start_6h = six_slots[six_slots.length - 2];
           end_6h = six_slots[six_slots.length - 1];
         }
-        drawTimeSection(section_positions[7], start_6h, end_6h, colors, labels, "Cấp 6H", img_width, img_height, margin, section_height);
+        drawTimeSection(section_positions[7], start_6h, end_6h, colors, labels, "Cấp 6H", img_width, img_height, margin, section_height, 7);
 
         // === Hiển thị thời gian hiện tại ===
         const current_time_str = `Bây giờ là: ${formatDateTime(now)}:${now.getSeconds().toString().padStart(2, "0")}`;
