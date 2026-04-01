@@ -188,9 +188,16 @@
         <!-- Mobile Nav Dropdown -->
         <div id="mobile-nav-menu" class="md:hidden bg-white border-t border-gray-100 shadow-md">
             <nav class="flex flex-col px-4 py-3 gap-1">
-                <a href="#dichvu" onclick="closeMobileNav()" class="flex items-center gap-3 py-3 px-3 rounded-lg text-gray-700 font-semibold hover:bg-blue-50 hover:text-trust transition">
+                <a href="#dichvu" onclick="closeMobileNav()" class="flex items-center gap-3 py-3 px-3 rounded-lg text-gray-700 font-bold bg-gray-50 border-l-4 border-trust">
                     <i class="fa-solid fa-toolbox text-trust w-5 text-center"></i> Dịch Vụ
                 </a>
+                <!-- Sub Menu Services -->
+                <div class="flex flex-col pl-8 gap-1 mb-2">
+                    <a href="kich-binh.html" class="py-2 text-sm text-gray-600 hover:text-trust border-b border-gray-50 flex items-center gap-2"><i class="fa-solid fa-bolt text-[10px]"></i> Kích Bình Ắc Quy</a>
+                    <a href="lam-con-xe-ga.html" class="py-2 text-sm text-gray-600 hover:text-trust border-b border-gray-50 flex items-center gap-2"><i class="fa-solid fa-screwdriver-wrench text-[10px]"></i> Làm Côn Xe Ga</a>
+                    <a href="thay-pin-smartkey.html" class="py-2 text-sm text-gray-600 hover:text-trust border-b border-gray-50 flex items-center gap-2"><i class="fa-solid fa-key text-[10px]"></i> Thay Pin Smartkey</a>
+                    <a href="sua-xe-chet-may.html" class="py-2 text-sm text-gray-600 hover:text-trust border-b border-gray-50 flex items-center gap-2"><i class="fa-solid fa-water text-[10px]"></i> Sửa Xe Chết Máy</a>
+                </div>
                 <a href="#quy-trinh" onclick="closeMobileNav()" class="flex items-center gap-3 py-3 px-3 rounded-lg text-gray-700 font-semibold hover:bg-blue-50 hover:text-trust transition">
                     <i class="fa-solid fa-list-check text-trust w-5 text-center"></i> Quy Trình
                 </a>
@@ -250,15 +257,15 @@
                                 <span class="font-bold text-trust">59K - 79K</span>
                             </li>
                             <li class="py-4 flex justify-between items-center">
-                                <span class="font-semibold text-gray-800"><i class="fa-solid fa-car-battery text-gray-400 mr-3"></i> Kích bình xe tay ga</span>
+                                <a href="kich-binh.html" class="font-semibold text-gray-800 hover:text-trust transition flex-1"><i class="fa-solid fa-car-battery text-gray-400 mr-3"></i> Kích bình xe tay ga</a>
                                 <span class="font-bold text-trust">79K</span>
                             </li>
                             <li class="py-4 flex justify-between items-center">
-                                <span class="font-semibold text-gray-800"><i class="fa-solid fa-oil-can text-gray-400 mr-3"></i> Làm côn xe tay ga Thay bi, chuông, dây curoa</span>
+                                <a href="lam-con-xe-ga.html" class="font-semibold text-gray-800 hover:text-trust transition flex-1"><i class="fa-solid fa-oil-can text-gray-400 mr-3"></i> Làm côn xe tay ga Thay bi, chuông, dây curoa</a>
                                 <span class="font-bold text-trust">Từ 135K</span>
                             </li>
                             <li class="py-4 flex justify-between items-center">
-                                <span class="font-semibold text-gray-800"><i class="fa-solid fa-oil-can text-gray-400 mr-3"></i> Thay pin smartkey</span>
+                                <a href="thay-pin-smartkey.html" class="font-semibold text-gray-800 hover:text-trust transition flex-1"><i class="fa-solid fa-oil-can text-gray-400 mr-3"></i> Thay pin smartkey</a>
                                 <span class="font-bold text-trust">Từ 49K</span>
                             </li>
 
@@ -282,7 +289,7 @@
                                 <span class="font-bold text-trust">79K</span>
                             </li>
                             <li class="py-4 flex justify-between items-center text-action">
-                                <span class="font-bold"><i class="fa-solid fa-moon mr-3"></i> Xe chết máy</span>
+                                <a href="sua-xe-chet-may.html" class="font-bold hover:underline flex-1"><i class="fa-solid fa-moon mr-3"></i> Xe chết máy</a>
                                 <span class="font-bold text-right text-sm"> Từ 59k - Báo giá trực tiếp theo tình trạng</span>
                             </li>
                         </ul>
@@ -296,7 +303,7 @@
                                 <span class="font-bold text-trust">99K - 129K</span>
                             </li>
                             <li class="py-4 flex justify-between items-center">
-                                <span class="font-semibold text-gray-800"><i class="fa-solid fa-car-battery text-gray-400 mr-3"></i> Kích bình ắc quy ô tô</span>
+                                <a href="kich-binh.html" class="font-semibold text-gray-800 hover:text-trust transition flex-1"><i class="fa-solid fa-car-battery text-gray-400 mr-3"></i> Kích bình ắc quy ô tô</a>
                                 <span class="font-bold text-trust">119K - 150K</span>
                             </li>
                             <li class="py-4 flex justify-between items-center">
@@ -397,24 +404,24 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group" data-aos="fade-up" data-aos-delay="200">
+                <a href="kich-binh.html" class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group block" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-rescue group-hover:text-white transition">
                         <i class="fa-solid fa-car-battery text-2xl text-rescue group-hover:text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-gray-900">Kích bình - Thay ắc quy</h3>
                     <p class="text-gray-600 mb-4 h-24">Xe không đề được? Kích bình siêu tốc hoặc thay mới ắc quy chính hãng (GS, Globe) bảo hành dài hạn.</p>
                     <div class="font-bold text-action text-lg">Chỉ từ 79k</div>
-                </div>
+                </a>
 
                 <!-- Card 3 -->
-                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group" data-aos="fade-up" data-aos-delay="300">
+                <a href="sua-xe-chet-may.html" class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group block" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-trust group-hover:text-white transition">
                         <i class="fa-solid fa-water text-2xl text-trust group-hover:text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-gray-900">Sửa xe chết máy/ngập nước</h3>
                     <p class="text-gray-600 mb-4 h-24">Cấp cứu xe ngập nước mùa mưa Đà Nẵng. Xử lý bugi, thay nhớt, vệ sinh máy giúp xe nổ máy ngay tại chỗ.</p>
                     <div class="font-bold text-action text-lg">Báo giá theo tình trạng</div>
-                </div>
+                </a>
 
                 <!-- Card 4 -->
                 <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group" data-aos="fade-up" data-aos-delay="400">
@@ -427,14 +434,14 @@
                 </div>
 
                 <!-- Card 5 -->
-                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group" data-aos="fade-up" data-aos-delay="400">
+                <a href="lam-con-xe-ga.html" class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group block" data-aos="fade-up" data-aos-delay="400">
                     <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green-600 group-hover:text-white transition">
                         <i class="fa-solid fa-gas-pump text-2xl text-green-600 group-hover:text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-gray-900">Làm côn xe tay ga</h3>
                     <p class="text-gray-600 mb-4 h-24">Đi bị giật, ga yếu, lên dốc ì máy? Làm côn xe tay ga tại chỗ, giá tốt, bảo hành dài hạn.</p>
                     <div class="font-bold text-action text-lg">Thay bi, chuông, dây curoa</div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
