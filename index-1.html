@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth dark">
+<head>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18019570448"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18019570448');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Sửa xe lưu động Đà Nẵng 24/7 Thông Nguyễn - Có mặt sau 5-10 phút tại Liên Chiểu. Vá lốp, thay nhớt, kích bình tận nơi. Trọn gói không phụ phí ẩn.">
+    <title>Sửa Xe Lưu Động Đà Nẵng Khẩn Cấp 24/7 | Thông Nguyễn</title>
+    <link rel="icon" type="image/png" href="thong/images/logoNew.png">
+
+    <!-- Google Fonts: Outfit for Gen Z Vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rescue: '#ffcc00',
+                        trust: '#3b82f6',
+                        action: '#ff3333',
+                        light: '#f8f9fa',
+                        darkbase: '#0f172a',
+                        darkcard: '#1e293b'
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'slide-up': 'slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'vibrate': 'vibrate 1.5s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 1, filter: 'drop-shadow(0 0 8px rgba(255, 51, 51, 0.6))' },
+                            '50%': { opacity: .7, filter: 'drop-shadow(0 0 15px rgba(255, 51, 51, 0.9))' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' },
+                        },
+                        vibrate: {
+                            '0%, 50%, 100%': { transform: 'translate(0)' },
+                            '10%, 30%': { transform: 'translate(-2px, 2px)' },
+                            '20%, 40%': { transform: 'translate(2px, -2px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f172a; 
+            color: #f8f9fa;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            padding-bottom: 80px;
+        }
+        @media (min-width: 768px) {
+            body { padding-bottom: 0; }
+            .mobile-sticky-bar { display: none !important; }
+        }
+
+        .glass {
+            background: rgba(30, 41, 59, 0.7); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .tab-btn {
+            color: #94a3b8;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            color: #ffcc00; 
+            border-bottom: 2px solid transparent;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #mobile-nav-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #1e293b;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+        }
+        #mobile-nav-sheet.open {
+            transform: translateY(0);
+        }
+        #mobile-nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            z-index: 999;
+        }
+        #mobile-nav-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .neon-text-red {
+            text-shadow: 0 0 10px rgba(255,51,51,0.8), 0 0 20px rgba(255,51,51,0.4);
+        }
+        .neon-text-yellow {
+            text-shadow: 0 0 10px rgba(255,204,0,0.8), 0 0 20px rgba(255,204,0,0.4);
+        }
+        .neon-box-red {
+            box-shadow: 0 0 15px rgba(255,51,51,0.5);
+        }
+    </style>
+</head>
+<body class="bg-darkbase text-gray-100 antialiased overflow-x-hidden w-full max-w-[100vw]">
+
+    <!-- Header Glassmorphism -->
+    <header class="fixed top-0 left-0 right-0 w-full z-50 glass shadow-md border-b border-white/10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <img src="thong/images/logoNew.png" alt="Logo" class="w-10 h-10 object-cover rounded-full shadow-lg border border-white/20" onerror="this.src='https://ui-avatars.com/api/?name=TN&background=3b82f6&color=fff'">
+                    <div class="absolute inset-0 rounded-full border-2 border-action animate-pulse"></div>
+                </div>
+                <div class="font-extrabold leading-tight">
+                    <div class="text-[15px] md:text-lg text-white tracking-wide">THÔNG NGUYỄN</div>
+                    <div class="text-[12px] md:text-sm text-rescue neon-text-yellow uppercase">Cứu Hộ 24/7</div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:0898190266" class="hidden md:flex items-center gap-2 bg-action text-white px-6 py-2.5 rounded-full font-bold hover:bg-red-600 transition shadow-[0_0_15px_rgba(255,51,51,0.6)] hover:shadow-[0_0_25px_rgba(255,51,51,0.8)] animate-pulse-glow">
+                    <i class="fa-solid fa-phone animate-vibrate"></i> 0898.190.266
+                </a>
+                <button id="menu-trigger" class="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition" aria-label="Menu" onclick="openNav()">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay & Sheet -->
+    <div id="mobile-nav-overlay" onclick="closeNav()"></div>
+    <div id="mobile-nav-sheet" class="flex flex-col max-h-[85vh]">
+        <div class="w-full flex justify-center pt-3 pb-2" onclick="closeNav()">
+            <div class="w-12 h-1.5 bg-gray-500 rounded-full"></div>
+        </div>
+        <div class="px-6 pb-4 border-b border-gray-700 flex justify-between items-center">
+            <h3 class="font-bold text-xl text-white">Menu Cứu Hộ</h3>
+            <button class="w-8 h-8 rounded-full bg-gray-700 text-gray-300 flex items-center justify-center" aria-label="Close" onclick="closeNav()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="overflow-y-auto hide-scrollbar px-6 py-4 flex flex-col gap-2">
+            <a href="index.html" class="flex items-center gap-4 py-3 text-gray-200 font-medium text-lg" onclick="closeNav()">
+                <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-trust"><i class="fa-solid fa-home"></i></div>
+                Trang Chủ
+            </a>
+            <div class="py-2 text-sm text-gray-500 font-bold uppercase tracking-wider">Dịch Vụ Khẩn Cấp</div>
+            <a href="kich-binh.html" class="flex items-center gap-4 py-3 text-gray-200" onclick="closeNav()">
+                <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-rescue"><i class="fa-solid fa-bolt"></i></div>
+                Kích Bình / Thay Ắc Quy
+            </a>
+            <a href="va-xe-dien.html" class="flex items-center gap-4 py-3 text-gray-200" onclick="closeNav()">
+                <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-blue-400"><i class="fa-solid fa-plug"></i></div>
+                Vá Lốp Xe Điện / Xe Máy
+            </a>
+            <a href="sua-xe-chet-may.html" class="flex items-center gap-4 py-3 text-gray-200" onclick="closeNav()">
+                <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400"><i class="fa-solid fa-water"></i></div>
+                Sửa Xe Chết Máy
+            </a>
+            <a href="lam-con-xe-ga.html" class="flex items-center gap-4 py-3 text-gray-200" onclick="closeNav()">
+                <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-purple-400"><i class="fa-solid fa-gear"></i></div>
+                Làm Côn Xe Ga
+            </a>
+            <div class="py-2 text-sm text-gray-500 font-bold uppercase tracking-wider mt-2">Thông Tin</div>
+            <a href="#bang-gia" class="flex items-center gap-4 py-3 text-gray-200" onclick="closeNav()">
+                <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-green-400"><i class="fa-solid fa-tags"></i></div>
+                Bảng Giá Dịch Vụ
+            </a>
+            <a href="#viec-lam-thuc-te" class="flex items-center gap-4 py-3 text-gray-200" onclick="closeNav()">
+                <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-orange-400"><i class="fa-solid fa-images"></i></div>
+                Việc Làm Thực Tế
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-32 min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <!-- Abstract Dark BG -->
+        <div class="absolute inset-0 z-0 bg-darkbase">
+            <div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-trust/20 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-action/20 rounded-full blur-[120px]"></div>
+            <img src="thong/images/a3.png" alt="Background" class="w-full h-full object-cover opacity-20 mix-blend-overlay">
+            <div class="absolute inset-0 bg-gradient-to-b from-darkbase/50 via-darkbase/80 to-darkbase"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 text-sm font-medium text-gray-300">
+                <span class="inline-block w-2 h-2 rounded-full bg-action animate-ping mr-2"></span> Đội cứu hộ trực sẵn tại Liên Chiểu & Đà Nẵng
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6 tracking-tight">
+                CỨU HỘ XE MÁY <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-rescue to-action neon-text-red">SIÊU TỐC ĐÀ NẴNG</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-6 max-w-2xl mx-auto font-light">
+                Chết máy, xịt lốp, hết bình giữa đêm? Đừng hoảng! <strong class="text-white">Có mặt siêu tốc 5 - 10 phút tại Liên Chiểu / Hòa Khánh.</strong> Sẵn sàng cứu hộ các quận khác.
+            </p>
+
+            <div class="mb-10">
+                <span class="inline-block px-4 py-2 bg-green-500/10 text-green-400 rounded-full text-sm md:text-base font-bold border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.15)]">
+                    <i class="fa-solid fa-check-circle mr-1"></i> Miễn phí phí di chuyển trong bán kính 3km
+                </span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="tel:0898190266" class="w-full sm:w-auto bg-action text-white text-xl font-bold py-4 px-10 rounded-full neon-box-red hover:bg-red-600 transition transform hover:scale-105 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-phone-volume animate-vibrate text-2xl"></i>
+                    GỌI NGAY: 0898.190.266
+                </a>
+                <a href="https://zalo.me/0898190266" target="_blank" class="w-full sm:w-auto bg-blue-600/20 border border-blue-500/50 text-blue-400 text-lg font-bold py-4 px-8 rounded-full hover:bg-blue-600 hover:text-white transition flex items-center justify-center gap-3 backdrop-blur-md">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    GỬI ĐỊNH VỊ ZALO
+                </a>
+            </div>
+            
+            <!-- Floating features -->
+            <div class="mt-16 grid grid-cols-3 gap-4 max-w-3xl mx-auto">
+                <div class="glass rounded-2xl p-4 flex flex-col items-center justify-center animate-float" style="animation-delay: 0s;">
+                    <i class="fa-solid fa-stopwatch text-3xl text-rescue mb-2"></i>
+                    <span class="text-sm font-semibold text-gray-200 mt-2">5-10 Phút Tới</span>
+                </div>
+                <div class="glass rounded-2xl p-4 flex flex-col items-center justify-center animate-float" style="animation-delay: 1s;">
+                    <i class="fa-solid fa-wallet text-3xl text-green-400 mb-2"></i>
+                    <span class="text-sm font-semibold text-gray-200 mt-2">Trọn Gói Minh Bạch</span>
+                </div>
+                <div class="glass rounded-2xl p-4 flex flex-col items-center justify-center animate-float" style="animation-delay: 2s;">
+                    <i class="fa-solid fa-moon text-3xl text-blue-400 mb-2"></i>
+                    <span class="text-sm font-semibold text-gray-200 mt-2">Trực Đêm 24/7</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof TikTok/FB - Pushed UP to build extreme trust immediately -->
+    <section class="py-16 bg-[#0b1121]" id="nguoithat">
+        <div class="container mx-auto px-4 max-w-5xl text-center">
+            <h2 class="text-3xl font-extrabold text-white mb-2" data-aos="fade-up">THỢ RUỘT <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#fe2c55] to-[#25f4ee]">ĐÀ NẴNG</span></h2>
+            <p class="text-gray-400 mb-10 max-w-xl mx-auto text-sm md:text-base" data-aos="fade-up" data-aos-delay="100">
+                Uy tín từ kênh TikTok cứu hộ xe máy hàng đầu. Người thật, việc thật - Nói KHÔNG với báo giá ảo.
+            </p>
+
+            <div class="flex justify-center" data-aos="zoom-in" data-aos-delay="200">
+                <div class="w-[300px] h-[600px] bg-darkcard rounded-[40px] p-2 border-4 border-gray-800 shadow-[0_0_40px_rgba(37,244,238,0.1)] relative overflow-hidden group">
+                    <div class="absolute top-0 inset-x-0 h-6 bg-darkcard rounded-t-[36px] z-20 flex justify-center items-end pb-1">
+                        <div class="w-20 h-5 bg-black rounded-b-xl"></div>
+                    </div>
+                    <img src="thong/images/nenTikTok.png" alt="TikTok background" class="w-full h-full object-cover rounded-[32px] opacity-80">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent rounded-[32px] z-10 flex flex-col justify-end p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <img src="thong/images/logoNew.png" alt="logo" class="w-10 h-10 rounded-full border border-white">
+                            <span class="text-white font-bold">@suaxeluudongdanang247</span>
+                        </div>
+                        <p class="text-white text-sm text-left line-clamp-2 mb-4">Giải cứu anh trai ngập nước giữa đêm tại Sơn Trà... #cuuho #danang</p>
+                        
+                        <a href="https://www.tiktok.com/@suaxeluudongdanang247" target="_blank" class="w-full bg-[#fe2c55] text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 backdrop-blur-md hover:bg-red-600 transition shadow-lg shadow-red-500/30">
+                            <i class="fa-brands fa-tiktok text-xl"></i> Xem Thợ Làm Việc Ngay
+                        </a>
+                    </div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                        <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white text-2xl pl-1 group-hover:scale-110 transition shadow-xl">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section with segmented controls -->
+    <section class="py-16 bg-darkbase relative border-y border-white/5" id="bang-gia">
+        <div class="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-8" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-3"><span class="text-trust">BẢNG GIÁ</span> DỊCH VỤ</h2>
+                <p class="text-gray-400 text-sm md:text-base">Báo giá trọn gói - Không vẽ bệnh - <span class="text-green-400 font-bold">Cam kết không thu phụ phí ẩn</span></p>
+            </div>
+
+            <div class="bg-darkcard p-1.5 rounded-full flex mx-auto max-w-md mb-6 border border-white/5 shadow-lg" data-aos="fade-up">
+                <button class="flex-1 py-2.5 text-xs md:text-sm font-bold rounded-full tab-btn text-white bg-white/10 shadow transition active" onclick="switchTab(event, 'xega')">Xe Ga</button>
+                <button class="flex-1 py-2.5 text-xs md:text-sm font-bold rounded-full tab-btn hover:text-white transition" onclick="switchTab(event, 'xeso')">Xe Số</button>
+                <button class="flex-1 py-2.5 text-xs md:text-sm font-bold rounded-full tab-btn hover:text-white transition" onclick="switchTab(event, 'oto')">Khác</button>
+            </div>
+
+            <div class="glass rounded-[24px] md:rounded-[32px] p-5 md:p-8 border border-white/10 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                
+                <div id="xega" class="tab-content active">
+                    <div class="mb-4 flex items-start gap-3 bg-blue-500/10 p-3 rounded-xl border border-blue-500/20">
+                        <i class="fa-solid fa-circle-info text-blue-400 mt-0.5 text-base"></i>
+                        <p class="text-[13px] text-blue-200 leading-relaxed">Giá đã bao gồm công thợ đến tận nơi. Linh kiện cam kết chuẩn zin cho Vision, AB, SH, Lead...</p>
+                    </div>
+                    <ul class="flex flex-col gap-2">
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-wrench text-gray-500 mr-2 w-5 text-center"></i> Vá lốp không săm trọn gói</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">80k - 120k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-car-battery text-gray-500 mr-2 w-5 text-center"></i> Thay bình ắc quy GS/Globe (BH 6T)</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">350k - 480k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-fire text-gray-500 mr-2 w-5 text-center"></i> Khắc phục chết máy / Ngập nước</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">150k - 350k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-gear text-gray-500 mr-2 w-5 text-center"></i> Làm côn xe ga / Vệ sinh bảo dưỡng</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">Từ 480k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-rotate text-gray-500 mr-2 w-5 text-center"></i> Thay dây curoa xe ga (Bando chính hãng)</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">350k - 550k</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="xeso" class="tab-content">
+                    <div class="mb-4 flex items-start gap-3 bg-blue-500/10 p-3 rounded-xl border border-blue-500/20">
+                        <i class="fa-solid fa-circle-info text-blue-400 mt-0.5 text-base"></i>
+                        <p class="text-[13px] text-blue-200 leading-relaxed">Giá trọn gói áp dụng cho Wave, Sirius, Exciter, Winner... Săm lốp Casumina/Kenda loại 1.</p>
+                    </div>
+                    <ul class="flex flex-col gap-2">
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-wrench text-gray-500 mr-2 w-5 text-center"></i> Vá ép/Vá keo lốp có săm</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">60k - 90k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-circle-notch text-gray-500 mr-2 w-5 text-center"></i> Thay ruột (săm) trước/sau Casumina</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">135k - 150k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-ring text-gray-500 mr-2 w-5 text-center"></i> Thay lốp xe số tận nơi</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">250k - 380k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-link text-gray-500 mr-2 w-5 text-center"></i> Xử lý đứt sên / Thay nhông sên dĩa</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">150k - 350k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-arrows-left-right text-gray-500 mr-2 w-5 text-center"></i> Đứt dây ga / Dây phanh</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">80k - 150k</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="oto" class="tab-content">
+                    <div class="mb-4 flex items-start gap-3 bg-yellow-500/10 p-3 rounded-xl border border-yellow-500/20">
+                        <i class="fa-solid fa-moon text-yellow-400 mt-0.5 text-base"></i>
+                        <p class="text-[13px] text-yellow-200 leading-relaxed">Cứu hộ xe máy điện, ô tô & các cuốc xe đêm khuya. Báo giá chốt ngay qua Zalo trước khi chạy.</p>
+                    </div>
+                    <ul class="flex flex-col gap-2">
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-car text-gray-500 mr-2 w-5 text-center"></i> Vá lốp / Thay lốp sơ cua ô tô con</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">150k - 250k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-plug text-gray-500 mr-2 w-5 text-center"></i> Vá vỏ xe máy điện VinFast, Pega...</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">80k - 150k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-gas-pump text-gray-500 mr-2 w-5 text-center"></i> Mua hộ & Ship xăng khẩn cấp</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">Tiền Xăng + Ship</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-moon text-gray-500 mr-2 w-5 text-center"></i> Cứu hộ khẩn cấp đêm khuya</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">Thỏa thuận trọn gói</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-6 pt-5 border-t border-white/10 text-center flex flex-col md:flex-row gap-3 justify-center">
+                    <a href="tel:0898190266" class="inline-flex justify-center items-center w-full md:w-auto bg-gradient-to-r from-trust to-blue-500 text-white font-bold py-3.5 px-8 rounded-full hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition text-base md:text-lg">
+                        <i class="fa-solid fa-phone mr-2"></i> GỌI THỢ BÁO GIÁ NGAY
+                    </a>
+                    <a href="https://zalo.me/0898190266" target="_blank" class="inline-flex justify-center items-center w-full md:w-auto bg-white/10 border border-white/20 hover:bg-white/20 text-white font-bold py-3.5 px-8 rounded-full transition text-base md:text-lg">
+                        <i class="fa-brands fa-whatsapp mr-2 text-green-400"></i> GỬI ĐỊNH VỊ ZALO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (Horizontal Scroll on Mobile) with High Conversion CTAs & New Service -->
+    <section class="py-16 bg-[#0b1121] relative border-b border-white/5">
+        <div class="container mx-auto px-4 mb-8">
+            <h2 class="text-3xl font-extrabold text-white mb-2" data-aos="fade-right">Dịch Vụ Khẩn Cấp</h2>
+            <p class="text-gray-400 text-sm" data-aos="fade-right" data-aos-delay="100">Vuốt để xem thêm &rarr;</p>
+        </div>
+
+        <div class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory px-4 pb-12 gap-4 lg:grid lg:grid-cols-5 lg:px-4 lg:container lg:mx-auto">
+            <!-- Card 1 -->
+            <div class="snap-center shrink-0 w-[80vw] lg:w-auto glass rounded-[32px] p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition duration-500"></div>
+                <div>
+                    <div class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Vá Lốp <br/> Lưu Động</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">Vá nấm, vá rút xe ga, xe số, ô tô con không hư mâm vành. Thay lốp mới tại chỗ.</p>
+                </div>
+                <a href="tel:0898190266" class="block w-full bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] py-3.5 rounded-xl font-bold text-center transition">
+                    <i class="fa-solid fa-phone mr-1"></i> GỌI VÁ LỐP NGAY
+                </a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="snap-center shrink-0 w-[80vw] lg:w-auto glass rounded-[32px] p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-2xl group-hover:bg-yellow-500/20 transition duration-500"></div>
+                <div>
+                    <div class="w-14 h-14 bg-yellow-500/20 text-yellow-400 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-car-battery"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Kích Bình <br/> Thay Ắc Quy</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">Đề không nổ? Cứu hộ kích bình ô tô, xe máy hoặc thay bình GS/Globe bảo hành 6 tháng.</p>
+                </div>
+                <a href="tel:0898190266" class="block w-full bg-yellow-500 hover:bg-yellow-400 text-darkbase shadow-[0_0_15px_rgba(255,204,0,0.4)] py-3.5 rounded-xl font-extrabold text-center transition">
+                    <i class="fa-solid fa-bolt mr-1"></i> GỌI KÍCH BÌNH NGAY
+                </a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="snap-center shrink-0 w-[80vw] lg:w-auto glass rounded-[32px] p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-action/10 rounded-full blur-2xl group-hover:bg-action/20 transition duration-500"></div>
+                <div>
+                    <div class="w-14 h-14 bg-red-500/20 text-action rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Sửa Xe <br/> Chết Máy</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">Ngập nước, đứt dây điện, chuột cắn... Khắc phục tận nơi, test máy nổ đi luôn.</p>
+                </div>
+                <a href="tel:0898190266" class="block w-full bg-action hover:bg-red-500 text-white shadow-[0_0_15px_rgba(255,51,51,0.4)] py-3.5 rounded-xl font-bold text-center transition">
+                    <i class="fa-solid fa-fire-flame-curved mr-1"></i> GỌI SỬA MÁY NGAY
+                </a>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="snap-center shrink-0 w-[80vw] lg:w-auto glass rounded-[32px] p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-2xl group-hover:bg-green-500/20 transition duration-500"></div>
+                <div>
+                    <div class="w-14 h-14 bg-green-500/20 text-green-400 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-gas-pump"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Ship Xăng <br/> Thay Nhớt</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">Hết xăng giữa đường đêm khuya? Nhận mua hộ ship xăng. Thay nhớt bảo dưỡng tại nhà.</p>
+                </div>
+                <a href="https://zalo.me/0898190266" target="_blank" class="block w-full bg-green-600 hover:bg-green-500 text-white shadow-[0_0_15px_rgba(22,163,74,0.4)] py-3.5 rounded-xl font-bold text-center transition">
+                    <i class="fa-solid fa-location-dot mr-1"></i> GỬI ĐỊNH VỊ ZALO
+                </a>
+            </div>
+
+            <!-- Card 5 (NEW: Thợ xem xe cũ) -->
+            <div class="snap-center shrink-0 w-[80vw] lg:w-auto glass rounded-[32px] p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition duration-500"></div>
+                <div>
+                    <div class="w-14 h-14 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Thợ Đồng Hành <br/> Test Xe Cũ</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">Bạn định mua xe cũ? Thợ 7 năm kinh nghiệm đi cùng check máy, tránh xe đại tu, tai nạn.</p>
+                </div>
+                <a href="https://zalo.me/0898190266" target="_blank" class="block w-full bg-purple-600/20 border border-purple-500/50 hover:bg-purple-600 text-purple-300 hover:text-white py-3.5 rounded-xl font-bold text-center transition">
+                    <i class="fa-solid fa-calendar-check mr-1"></i> ĐẶT LỊCH CHECK XE
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Work Section -->
+    <section class="py-20 bg-darkbase relative" id="viec-lam-thuc-te">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4">VIỆC LÀM <span class="text-trust">THỰC TẾ</span></h2>
+                <p class="text-gray-400">Hình ảnh cứu hộ thực tế hàng ngày - Uy tín tạo niềm tin</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <!-- Case 1 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/1.jpg" alt="Cứu hộ Vision chết máy" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-action/90 text-white text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Cứu hộ đêm</div>
+                    </div>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Cứu hộ Vision chết máy</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Khắc phục sự cố dây điện và bugi ngập nước tại Sơn Trà, nổ máy tại chỗ.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/2.jpg" alt="Vá vỏ lưu động xe SH" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-trust/90 text-white text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Vá lốp</div>
+                    </div>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Vá vỏ lưu động xe SH</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Vá nấm bánh sau xe SH chuyên nghiệp tại Hải Châu, bảo vệ mâm vành tuyệt đối.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/3.jpg" alt="Thay bình ắc quy tại chỗ" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-yellow-500 text-darkbase text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Ắc quy</div>
+                    </div>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Thay bình GS tận nơi</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Thay bình chính hãng cho xe tay ga Honda Lead tại Liên Chiểu, bảo hành 6 tháng.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Case 4 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/4.jpg" alt="Sửa Wave chết máy" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-action/90 text-white text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Sửa máy</div>
+                    </div>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Sửa Wave ngập nước</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Súc rửa bình xăng con, thay nhớt và sấy khô hệ thống điện tại Thanh Khê.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Case 5 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="500">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/5.jpg" alt="Khắc phục xe ga đứt curoa" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-purple-500/90 text-white text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Côn & Curoa</div>
+                    </div>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Thay curoa côn xe ga</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Cứu hộ Air Blade đứt curoa tại Cẩm Lệ, thay dây chính hãng Honda chạy cực êm.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Case 6 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="600">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/6.jpg" alt="Cứu hộ xe máy điện" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-[#00d084] text-darkbase text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Xe điện</div>
+                    </div>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Cứu hộ xe máy điện</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Vá lốp không săm xe máy điện VinFast Evo tại Ngũ Hành Sơn khẩn cấp.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#080d1a] border-t border-white/5 pt-16 pb-32 md:pb-12 relative overflow-hidden">
+        <div class="absolute top-[-50px] right-[-50px] w-64 h-64 bg-trust/10 rounded-full blur-[80px] pointer-events-none"></div>
+        <div class="container mx-auto px-4 max-w-5xl relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <div class="flex items-center gap-4">
+                    <img src="thong/images/logoNew.png" alt="Logo" class="w-14 h-14 rounded-full border border-gray-700">
+                    <div>
+                        <h3 class="text-xl font-black text-white tracking-wider">THÔNG NGUYỄN</h3>
+                        <p class="text-rescue text-sm font-semibold uppercase">Sửa xe lưu động 24/7</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <a href="https://www.facebook.com/suaxeluudongdanang247tainha" class="w-12 h-12 rounded-full bg-blue-600/20 text-blue-500 flex items-center justify-center text-xl hover:bg-blue-600 hover:text-white transition">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@suaxeluudongdanang247" class="w-12 h-12 rounded-full bg-pink-600/20 text-pink-500 flex items-center justify-center text-xl hover:bg-pink-600 hover:text-white transition">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center text-gray-500 text-sm border-t border-white/10 pt-8">
+                &copy; 2026 Sửa Xe Thông Nguyễn Đà Nẵng. <br>
+                <span class="text-xs mt-2 block">Thiết kế bởi <a href="https://sportaiv.com" class="text-yellow-600 hover:underline">SPORTAIV AGENTIC AI</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY ACTION BAR (MOBILE FIRST) -->
+    <div class="mobile-sticky-bar fixed bottom-0 left-0 w-full z-[100] flex md:hidden p-3 gap-3 glass rounded-t-3xl border-t border-white/10 pb-[calc(12px+env(safe-area-inset-bottom,0px))]">
+        <a href="tel:0898190266" class="flex-1 bg-action text-white rounded-2xl flex flex-col items-center justify-center py-3 font-bold shadow-[0_0_15px_rgba(255,51,51,0.4)] active:scale-95 transition">
+            <i class="fa-solid fa-phone text-xl mb-1 animate-vibrate"></i>
+            <span class="text-[12px] uppercase tracking-wider">Gọi Khẩn Cấp</span>
+        </a>
+        <a href="https://zalo.me/0898190266" target="_blank" class="flex-1 bg-blue-600 text-white rounded-2xl flex flex-col items-center justify-center py-3 font-bold shadow-[0_0_15px_rgba(37,99,235,0.4)] active:scale-95 transition">
+            <i class="fa-brands fa-whatsapp text-xl mb-1"></i>
+            <span class="text-[12px] uppercase tracking-wider">Zalo Định Vị</span>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 50 });
+
+        const sheet = document.getElementById('mobile-nav-sheet');
+        const overlay = document.getElementById('mobile-nav-overlay');
+
+        function openNav() {
+            sheet.classList.add('open');
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeNav() {
+            sheet.classList.remove('open');
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function switchTab(evt, tabName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+                tablinks[i].classList.remove("text-white", "bg-white/10", "shadow");
+                tablinks[i].classList.add("text-[#94a3b8]");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("text-white", "bg-white/10", "shadow", "active");
+            evt.currentTarget.classList.remove("text-[#94a3b8]");
+        }
+    </script>
+</body>
+</html>
