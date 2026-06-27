@@ -246,6 +246,10 @@
                 <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-green-400"><i class="fa-solid fa-tags"></i></div>
                 Bảng Giá Dịch Vụ
             </a>
+            <a href="#viec-lam-thuc-te" class="flex items-center gap-4 py-3 text-gray-200" onclick="closeNav()">
+                <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-orange-400"><i class="fa-solid fa-images"></i></div>
+                Việc Làm Thực Tế
+            </a>
         </div>
     </div>
 
@@ -295,6 +299,128 @@
                 <div class="glass rounded-2xl p-4 flex flex-col items-center justify-center animate-float" style="animation-delay: 2s;">
                     <i class="fa-solid fa-moon text-3xl text-blue-400 mb-2"></i>
                     <span class="text-sm font-semibold text-gray-200 mt-2">Trực Đêm 24/7</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section with segmented controls -->
+    <section class="py-16 bg-[#0b1121] relative border-b border-white/5" id="bang-gia">
+        <div class="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-8" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-3"><span class="text-trust">BẢNG GIÁ</span> DỊCH VỤ</h2>
+                <p class="text-gray-400 text-sm md:text-base">Báo giá minh bạch - Cam kết đúng giá - Không vẽ bệnh</p>
+            </div>
+
+            <!-- Segmented Control Tabs -->
+            <div class="bg-darkcard p-1.5 rounded-full flex mx-auto max-w-md mb-6 border border-white/5 shadow-lg" data-aos="fade-up">
+                <button class="flex-1 py-2.5 text-xs md:text-sm font-bold rounded-full tab-btn text-white bg-white/10 shadow transition active" onclick="switchTab(event, 'xega')">Xe Ga</button>
+                <button class="flex-1 py-2.5 text-xs md:text-sm font-bold rounded-full tab-btn hover:text-white transition" onclick="switchTab(event, 'xeso')">Xe Số</button>
+                <button class="flex-1 py-2.5 text-xs md:text-sm font-bold rounded-full tab-btn hover:text-white transition" onclick="switchTab(event, 'oto')">Khác</button>
+            </div>
+
+            <!-- Pricing Content Container -->
+            <div class="glass rounded-[24px] md:rounded-[32px] p-5 md:p-8 border border-white/10 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                
+                <!-- Tab: Xe Ga -->
+                <div id="xega" class="tab-content active">
+                    <div class="mb-4 flex items-start gap-3 bg-blue-500/10 p-3 rounded-xl border border-blue-500/20">
+                        <i class="fa-solid fa-circle-info text-blue-400 mt-0.5 text-base"></i>
+                        <p class="text-[13px] text-blue-200 leading-relaxed">Áp dụng cho Vision, Air Blade, Lead, SH, NVX, Grande... Cam kết linh kiện chuẩn zin.</p>
+                    </div>
+                    <ul class="flex flex-col gap-2">
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-wrench text-gray-500 mr-2 w-5 text-center"></i> Vá lốp không săm lưu động</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">60k - 100k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-car-battery text-gray-500 mr-2 w-5 text-center"></i> Thay bình ắc quy GS/Globe (Bảo hành 6T)</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">350k - 480k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-fire text-gray-500 mr-2 w-5 text-center"></i> Sửa chết máy / Ngập nước tận nơi</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">150k - 350k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-gear text-gray-500 mr-2 w-5 text-center"></i> Làm côn xe ga / Búa côn Vision/Lead</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">Từ 480k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-rotate text-gray-500 mr-2 w-5 text-center"></i> Thay dây curoa xe ga</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">300k - 550k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-key text-gray-500 mr-2 w-5 text-center"></i> Thay pin Smartkey tận nơi</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">50k - 100k</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tab: Xe Số -->
+                <div id="xeso" class="tab-content">
+                    <div class="mb-4 flex items-start gap-3 bg-blue-500/10 p-3 rounded-xl border border-blue-500/20">
+                        <i class="fa-solid fa-circle-info text-blue-400 mt-0.5 text-base"></i>
+                        <p class="text-[13px] text-blue-200 leading-relaxed">Áp dụng cho Wave, Sirius, Future, Exciter, Winner... Săm lốp Casumina/Kenda chính hãng.</p>
+                    </div>
+                    <ul class="flex flex-col gap-2">
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-wrench text-gray-500 mr-2 w-5 text-center"></i> Vá lốp có săm lưu động</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">50k - 80k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-circle-notch text-gray-500 mr-2 w-5 text-center"></i> Thay ruột (săm) trước/sau Casumina</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">135k - 140k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-ring text-gray-500 mr-2 w-5 text-center"></i> Thay lốp xe số (Casumina/Kenda)</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">250k - 350k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-link text-gray-500 mr-2 w-5 text-center"></i> Nối sên / Thay nhông sên dĩa</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">150k - 350k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-arrows-left-right text-gray-500 mr-2 w-5 text-center"></i> Đứt dây ga / Dây phanh</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">80k - 150k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-scissors text-gray-500 mr-2 w-5 text-center"></i> Nắn càng / Nắn ghi đông / Khung sườn</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">150k - 1.200k</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tab: Khác -->
+                <div id="oto" class="tab-content">
+                    <div class="mb-4 flex items-start gap-3 bg-yellow-500/10 p-3 rounded-xl border border-yellow-500/20">
+                        <i class="fa-solid fa-moon text-yellow-400 mt-0.5 text-base"></i>
+                        <p class="text-[13px] text-yellow-200 leading-relaxed">Cứu hộ xe máy điện, ô tô & phụ phí ban đêm. Vui lòng gọi trực tiếp để thợ báo giá chính xác theo định vị.</p>
+                    </div>
+                    <ul class="flex flex-col gap-2">
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-car text-gray-500 mr-2 w-5 text-center"></i> Vá lốp / Thay sơ cua ô tô con</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">150k - 250k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-plug text-gray-500 mr-2 w-5 text-center"></i> Cứu hộ / Vá vỏ xe máy điện tận nơi</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">60k - 120k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-gas-pump text-gray-500 mr-2 w-5 text-center"></i> Ship xăng tận nơi khẩn cấp</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">80k - 120k</span>
+                        </li>
+                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
+                            <span class="text-gray-200 font-medium group-hover:text-white text-sm md:text-base"><i class="fa-solid fa-moon text-gray-500 mr-2 w-5 text-center"></i> Phụ phí cứu hộ khuya (sau 22h)</span>
+                            <span class="text-sm font-bold text-rescue neon-text-yellow">50k - 100k</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-6 pt-5 border-t border-white/10 text-center">
+                    <a href="tel:0898190266" class="inline-block w-full md:w-auto bg-gradient-to-r from-trust to-blue-500 text-white font-bold py-3.5 px-8 rounded-full hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition text-base md:text-lg">
+                        <i class="fa-solid fa-phone mr-2"></i> GỌI THỢ BÁO GIÁ NGAY
+                    </a>
                 </div>
             </div>
         </div>
@@ -362,111 +488,115 @@
         </div>
     </section>
 
-    <!-- Pricing Section with segmented controls -->
-    <section class="py-20 bg-[#0b1121] relative" id="bang-gia">
-        <div class="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
-        <div class="container mx-auto px-4 max-w-4xl">
+    <!-- Real Work Section -->
+    <section class="py-20 bg-darkbase relative border-t border-white/5" id="viec-lam-thuc-te">
+        <div class="container mx-auto px-4 max-w-5xl">
             <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-4xl font-black text-white mb-4"><span class="text-trust">BẢNG GIÁ</span> DỊCH VỤ</h2>
-                <p class="text-gray-400">Minh bạch - Rõ ràng - Không chém giá ban đêm</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4">VIỆC LÀM <span class="text-trust">THỰC TẾ</span></h2>
+                <p class="text-gray-400">Hình ảnh cứu hộ thực tế hàng ngày - Uy tín tạo niềm tin</p>
             </div>
 
-            <!-- Segmented Control Tabs -->
-            <div class="bg-darkcard p-1.5 rounded-full flex mx-auto max-w-md mb-8 border border-white/5 shadow-lg" data-aos="fade-up">
-                <button class="flex-1 py-3 text-sm font-bold rounded-full tab-btn text-white bg-white/10 shadow transition active" onclick="switchTab(event, 'xega')">Xe Ga</button>
-                <button class="flex-1 py-3 text-sm font-bold rounded-full tab-btn hover:text-white transition" onclick="switchTab(event, 'xeso')">Xe Số</button>
-                <button class="flex-1 py-3 text-sm font-bold rounded-full tab-btn hover:text-white transition" onclick="switchTab(event, 'oto')">Khác</button>
-            </div>
-
-            <!-- Pricing Content Container -->
-            <div class="glass rounded-[32px] p-6 md:p-10 border border-white/10 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                
-                <!-- Tab: Xe Ga -->
-                <div id="xega" class="tab-content active">
-                    <div class="mb-6 flex items-start gap-3 bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
-                        <i class="fa-solid fa-circle-info text-blue-400 mt-1 text-lg"></i>
-                        <p class="text-sm text-blue-200 leading-relaxed">Áp dụng: Vision, Air Blade, Lead, SH, NVX... Phụ tùng chính hãng zin 100%.</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <!-- Case 1 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/1.jpg" alt="Cứu hộ Vision chết máy" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-action/90 text-white text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Cứu hộ đêm</div>
                     </div>
-                    <ul class="flex flex-col gap-2">
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-wrench text-gray-500 mr-3 w-5 text-center"></i> Vá lốp không săm</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-car-battery text-gray-500 mr-3 w-5 text-center"></i> Thay bình ắc quy (Bảo hành 6T)</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-fire text-gray-500 mr-3 w-5 text-center"></i> Sửa chết máy / Ngập nước</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-gear text-gray-500 mr-3 w-5 text-center"></i> Làm côn xe ga / Đứt curoa</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-key text-gray-500 mr-3 w-5 text-center"></i> Thay pin Smartkey</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                    </ul>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Cứu hộ Vision chết máy</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Khắc phục sự cố dây điện và bugi ngập nước tại Sơn Trà, nổ máy tại chỗ.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
                 </div>
 
-                <!-- Tab: Xe Số -->
-                <div id="xeso" class="tab-content">
-                    <div class="mb-6 flex items-start gap-3 bg-blue-500/10 p-4 rounded-xl border border-blue-500/20">
-                        <i class="fa-solid fa-circle-info text-blue-400 mt-1 text-lg"></i>
-                        <p class="text-sm text-blue-200 leading-relaxed">Áp dụng: Wave, Sirius, Exciter, Winner... Săm lốp chuẩn Kenda/Casumina.</p>
+                <!-- Case 2 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/2.jpg" alt="Vá vỏ lưu động xe SH" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-trust/90 text-white text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Vá lốp</div>
                     </div>
-                    <ul class="flex flex-col gap-2">
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-wrench text-gray-500 mr-3 w-5 text-center"></i> Vá lốp có săm</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-circle-notch text-gray-500 mr-3 w-5 text-center"></i> Thay ruột (săm) / lốp</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-link text-gray-500 mr-3 w-5 text-center"></i> Nối sên / Thay nhông sên dĩa</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-arrows-left-right text-gray-500 mr-3 w-5 text-center"></i> Đứt dây ga / Dây phanh</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                    </ul>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Vá vỏ lưu động xe SH</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Vá nấm bánh sau xe SH chuyên nghiệp tại Hải Châu, bảo vệ mâm vành tuyệt đối.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
                 </div>
 
-                <!-- Tab: Khác -->
-                <div id="oto" class="tab-content">
-                    <div class="mb-6 flex items-start gap-3 bg-yellow-500/10 p-4 rounded-xl border border-yellow-500/20">
-                        <i class="fa-solid fa-moon text-yellow-400 mt-1 text-lg"></i>
-                        <p class="text-sm text-yellow-200 leading-relaxed">Cứu hộ ô tô & phụ phí ban đêm. Liên hệ trực tiếp để thợ báo giá chính xác khoảng cách.</p>
+                <!-- Case 3 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/3.jpg" alt="Thay bình ắc quy tại chỗ" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-yellow-500 text-darkbase text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Ắc quy</div>
                     </div>
-                    <ul class="flex flex-col gap-2">
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-car text-gray-500 mr-3 w-5 text-center"></i> Vá lốp / Thay sơ cua ô tô</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-car-battery text-gray-500 mr-3 w-5 text-center"></i> Kích bình ô tô tận nơi</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-gas-pump text-gray-500 mr-3 w-5 text-center"></i> Ship xăng tận nơi</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                        <li class="flex justify-between items-center py-3 px-4 bg-white/5 hover:bg-white/10 rounded-xl transition cursor-pointer group">
-                            <span class="text-gray-200 font-medium group-hover:text-white"><i class="fa-solid fa-moon text-gray-500 mr-3 w-5 text-center"></i> Phụ phí khuya (sau 22h)</span>
-                            <span class="text-xs bg-action text-white px-3 py-1 rounded-full font-bold">Liên hệ</span>
-                        </li>
-                    </ul>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Thay bình GS tận nơi</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Thay bình chính hãng cho xe tay ga Honda Lead tại Liên Chiểu, bảo hành 6 tháng.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
                 </div>
 
-                <div class="mt-8 pt-6 border-t border-white/10 text-center">
-                    <a href="tel:0898190266" class="inline-block w-full md:w-auto bg-gradient-to-r from-trust to-blue-500 text-white font-bold py-4 px-10 rounded-full hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition text-lg">
-                        <i class="fa-solid fa-phone mr-2"></i> GỌI THỢ BÁO GIÁ NGAY
-                    </a>
+                <!-- Case 4 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/4.jpg" alt="Sửa Wave chết máy" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-action/90 text-white text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Sửa máy</div>
+                    </div>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Sửa Wave ngập nước</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Súc rửa bình xăng con, thay nhớt và sấy khô hệ thống điện tại Thanh Khê.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Case 5 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="500">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/5.jpg" alt="Khắc phục xe ga đứt curoa" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-purple-500/90 text-white text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Côn & Curoa</div>
+                    </div>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Thay curoa côn xe ga</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Cứu hộ Air Blade đứt curoa tại Cẩm Lệ, thay dây chính hãng Honda chạy cực êm.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Case 6 -->
+                <div class="glass rounded-[24px] overflow-hidden group shadow-lg border border-white/10 flex flex-col" data-aos="fade-up" data-aos-delay="600">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="thong/images/anhLamViec/6.jpg" alt="Cứu hộ xe máy điện" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 left-3 bg-[#00d084] text-darkbase text-[10px] md:text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Xe điện</div>
+                    </div>
+                    <div class="p-3 md:p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base md:text-lg font-bold text-white mb-1.5 line-clamp-1">Cứu hộ xe máy điện</h3>
+                            <p class="text-gray-400 text-[11px] md:text-xs leading-relaxed mb-3">Vá lốp không săm xe máy điện VinFast Evo tại Ngũ Hành Sơn khẩn cấp.</p>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold text-green-400 mt-auto">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đã hoàn thành
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
